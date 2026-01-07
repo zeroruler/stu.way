@@ -124,6 +124,7 @@
         }
 
         button {
+            -webkit-tap-highlight-color: transparent;
             font-family: "IBM Plex Sans KR";
             width: 100%;
             padding: 12px;
@@ -136,8 +137,18 @@
             transition: 0.3s;
         }
 
-        button:hover {
-            background-color: #357abd;
+        @media (hover: hover) {
+            button:hover {
+                background-color: #357abd; /* 기존 hover 색상 */
+                transform: translateY(-1px); /* 살짝 떠오르는 효과 (선택사항) */
+            }
+        }
+
+        /* 2. 모바일/PC 공통: 실제로 버튼을 '꾹' 누르고 있을 때의 피드백 */
+        button:active {
+            background-color: #2d66a3; /* 더 진한 색상으로 변경 */
+            transform: translateY(1px); /* 눌리는 느낌 */
+            transition: 0.1s; /* 반응 속도를 빠르게 */
         }
 
         .footer {
