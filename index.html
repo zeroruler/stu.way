@@ -19,6 +19,12 @@
     <title>WAY 학생회 익명 건의함</title>
     <link rel="icon" href="way_main-logo-Photoroom.png" type="image/png">
     <link rel="apple-touch-icon" href="way_main-logo-Photoroom.png">
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
         :root {
             --main-color: #000000;
@@ -26,7 +32,7 @@
         }
 
         body {
-            font-family: 'Pretendard', sans-serif;
+            font-family: "IBM Plex Sans KR";
             background-color: var(--bg-color);
             margin: 0;
             display: flex;
@@ -118,12 +124,14 @@
         }
 
         button {
+            font-family: "IBM Plex Sans KR";
             width: 100%;
             padding: 12px;
             background-color: var(--main-color);
             color: white; border:
             none; border-radius: 8px;
             font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -137,6 +145,24 @@
             margin-top: 1rem;
             font-size: 0.8rem;
             color: #888;
+        }
+
+        /* 화면 폭이 600px 이하일 때 적용되는 스타일 (모바일) */
+        @media (max-width: 600px) {
+            body {
+                background-color: #ffffff; /* 모바일 배경을 흰색으로 통일 */
+            }
+
+            .container {    
+                box-shadow: none;
+                width: 100%;
+                padding: 1rem;
+            }
+
+    
+            h2 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
