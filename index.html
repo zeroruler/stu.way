@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#fff">
-    
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zeroruler.github.io/stu.way/">
     <meta property="og:title" content="WAY 학생회 익명 건의함">
@@ -17,14 +18,12 @@
     <meta name="twitter:image" content="way_main-logo.jpg">
 
     <title>WAY 학생회 익명 건의함</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- Favicon -->
     <link rel="icon" href="way_main-logo-Photoroom.png" type="image/png">
     <link rel="apple-touch-icon" href="way_main-logo-Photoroom.png">
-
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
     <style>
         :root {
             --main-color: #000000;
@@ -37,40 +36,36 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            align-items: center; min-height: 100vh;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .container {
-            /* background: white;  <- 기존 흰색 배경을 지우고 아래처럼 바꿉니다. */
-            background: rgba(255, 255, 255, 0.85); /* 내용 가독성을 위해 흰색을 살짝 덮어줍니다. (0.85 조절 가능) */
-            position: relative; /* 배경 이미지를 안에 가두기 위해 필요 */
-            overflow: hidden;   /* 둥근 모서리 밖으로 이미지가 튀어나가지 않게 자름 */
+            background: rgba(255, 255, 255, 0.85);
+            position: relative;
+            overflow: hidden;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 90%;
             max-width: 500px;
             /* z-index: 1; 필요시 활성화 */
         }
 
-        /* 여기에 가상 요소(::before) 코드를 새로 추가합니다 */
         .container::before {
             content: "";
-            /* 아래 url('...') 안에 로고 파일명을 정확히 입력하세요 */
-            background-image: url('way_main-logo.jpg'); 
-            background-size: 100%; /* 로고 크기 조절 (박스의 60% 크기) */
-            background-position: center; /* 중앙 정렬 */
-            background-repeat: no-repeat; /* 반복 안 함 */
-
+            background-image: url('way_main-logo.jpg');
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
             opacity: 1;
-
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* 내용물보다 뒤로 보냄 */
-            pointer-events: none; /* 배경이 클릭을 방해하지 않도록 설정 */
+            z-index: -1;
+            pointer-events: none;
         }
 
         h2 {
@@ -89,38 +84,37 @@
             font-weight: bold;
         }
 
-        input, textarea {
+        input,
+        textarea {
             width: 100%;
             padding: 12px;
-            /* 배경색을 흰색(255,255,255)으로 하되, 투명도를 0.4 정도로 설정 */
-            background-color: rgba(255, 255, 255, 0.4); 
-    
-            /* 테두리를 살짝 흐리게 하거나 강조할 수 있습니다 */
-            border: 1px solid rgba(74, 144, 226, 0.3); 
-    
+            background-color: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 8px;
             box-sizing: border-box;
             font-size: 1rem;
             font-family: inherit;
-            transition: all 0.3s ease; /* 부드러운 전환 효과 */
+            transition: all 0.3s ease;
         }
 
         /* 입력창을 클릭(포커스)했을 때의 효과 */
-        input:focus, textarea:focus {
+        input:focus,
+        textarea:focus {
             outline: none;
-            /* 클릭하면 가독성을 위해 배경을 조금 더 진하게 만듭니다 */
             background-color: rgba(255, 255, 255, 0.8);
             border-color: var(--main-color);
             box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
         }
 
         /* 플레이스홀더(안내 문구) 색상 조절 */
-        input::placeholder, textarea::placeholder {
+        input::placeholder,
+        textarea::placeholder {
             color: #666;
         }
 
         textarea {
-            height: 150px; resize: none;
+            height: 150px;
+            resize: none;
         }
 
         button {
@@ -129,8 +123,10 @@
             width: 100%;
             padding: 12px;
             background-color: var(--main-color);
-            color: white; border:
-            none; border-radius: 8px;
+            color: white;
+            border:
+                none;
+            border-radius: 8px;
             font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
@@ -139,16 +135,17 @@
 
         @media (hover: hover) {
             button:hover {
-                background-color: #357abd; /* 기존 hover 색상 */
-                transform: translateY(-1px); /* 살짝 떠오르는 효과 (선택사항) */
+                background-color: #357abd;
+                transform: translateY(-1px);
             }
         }
 
         /* 2. 모바일/PC 공통: 실제로 버튼을 '꾹' 누르고 있을 때의 피드백 */
         button:active {
-            background-color: #2d66a3; /* 더 진한 색상으로 변경 */
-            transform: translateY(1px); /* 눌리는 느낌 */
-            transition: 0.1s; /* 반응 속도를 빠르게 */
+            background-color: #2d66a3;
+            transform: translateY(1px);
+            /* 눌리는 느낌 */
+            transition: 0.1s;
         }
 
         .footer {
@@ -161,83 +158,84 @@
         /* 화면 폭이 600px 이하일 때 적용되는 스타일 (모바일) */
         @media (max-width: 600px) {
             body {
-                background-color: #ffffff; /* 모바일 배경을 흰색으로 통일 */
+                background-color: #ffffff;
             }
 
-            .container {    
+            .container {
                 box-shadow: none;
                 width: 100%;
                 padding: 1rem;
             }
 
-    
             h2 {
                 font-size: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2>📩 WAY 학생회 익명 건의함</h2>
-    <form id="suggestionForm">
-        <div class="input-group">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
-        </div>
-        <div class="input-group">
-            <label for="message">건의 내용</label>
-            <textarea id="message" name="message" placeholder="학생회에 바라는 점을 자유롭게 적어주세요" required></textarea>
-        </div>
-        <button type="submit" id="submitBtn">제출하기</button>
-    </form>
-    <p class="footer">본 건의함은 익명으로 운영되며 개인정보를 수집하지 않습니다.</p>
-</div>
+    <div class="container">
+        <h2>📩 WAY 학생회 익명 건의함</h2>
+        <form id="suggestionForm">
+            <div class="input-group">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
+            </div>
+            <div class="input-group">
+                <label for="message">건의 내용</label>
+                <textarea id="message" name="message" placeholder="학생회에 바라는 점을 자유롭게 적어주세요" required></textarea>
+            </div>
+            <button type="submit" id="submitBtn">제출하기</button>
+        </form>
+        <p class="footer">본 건의함은 익명으로 운영되며 개인정보를 수집하지 않습니다.</p>
+    </div>
 
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzpFIxAzooCTCSAJe2EIooL37Ldhz00LxCd-u7AiZZWOHi9KyiEu4liiMA8TnLlbm4kTA/exec'; // 2단계에서 채울 예정
-    const form = document.getElementById('suggestionForm');
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzpFIxAzooCTCSAJe2EIooL37Ldhz00LxCd-u7AiZZWOHi9KyiEu4liiMA8TnLlbm4kTA/exec'; // 2단계에서 채울 예정
+        const form = document.getElementById('suggestionForm');
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        
-        // 1. 입력된 값 가져오기
-        const titleInput = document.getElementById('title');
-        const messageInput = document.getElementById('message');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
 
-        // 2. .trim()을 사용하여 앞뒤 공백 및 줄바꿈 제거
-        const cleanTitle = titleInput.value.trim();
-        const cleanMessage = messageInput.value.trim();
+            // 1. 입력된 값 가져오기
+            const titleInput = document.getElementById('title');
+            const messageInput = document.getElementById('message');
 
-        // 만약 공백을 지웠더니 내용이 텅 비어있다면 전송 막기
-        if (cleanTitle === "" || cleanMessage === "") {
-            alert("내용을 입력해주세요.");
-            return;
-        }
+            // 2. .trim()을 사용하여 앞뒤 공백 및 줄바꿈 제거
+            const cleanTitle = titleInput.value.trim();
+            const cleanMessage = messageInput.value.trim();
 
-        btn.innerText = '전송 중...';
-        btn.disabled = true;
+            // 만약 공백을 지웠더니 내용이 텅 비어있다면 전송 막기
+            if (cleanTitle === "" || cleanMessage === "") {
+                alert("내용을 입력해주세요.");
+                return;
+            }
 
-        // 3. 정돈된 데이터를 담아서 보내기
-        const formData = new FormData();
-        formData.append('title', cleanTitle);
-        formData.append('message', cleanMessage);
+            btn.innerText = '전송 중...';
+            btn.disabled = true;
 
-        fetch(scriptURL, { method: 'POST', body: formData })
-            .then(response => {
-                alert('소중한 의견이 성공적으로 전달되었습니다!');
-                form.reset();
-                btn.innerText = '제출하기';
-                btn.disabled = false;
-            })
-            .catch(error => {
-                alert('오류가 발생했습니다. 다시 시도해주세요.');
-                btn.disabled = false;
-            });
-    });
-</script>
+            // 3. 정돈된 데이터를 담아서 보내기
+            const formData = new FormData();
+            formData.append('title', cleanTitle);
+            formData.append('message', cleanMessage);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    alert('소중한 의견이 성공적으로 전달되었습니다!');
+                    form.reset();
+                    btn.innerText = '제출하기';
+                    btn.disabled = false;
+                })
+                .catch(error => {
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                    btn.disabled = false;
+                });
+        });
+    </script>
 
 </body>
+
 </html>
