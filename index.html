@@ -427,7 +427,7 @@
         }
 
         window.confirmDelete = async (id) => {
-            if (confirm("이 소중한 의견을 삭제하시겠습니까?")) {
+            if (confirm("삭제하시겠습니까?")) {
                 const item = document.getElementById(`item-${id}`);
                 item.classList.add('deleting');
                 setTimeout(async () => {
