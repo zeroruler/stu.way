@@ -4,158 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#fff">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://zeroruler.github.io/stu.way/">
-    <meta property="og:title" content="WAY 학생회 익명 건의함">
-    <meta property="og:description" content="여러분의 소중한 의견을 들려주세요. 본 건의함은 익명으로 운영됩니다.">
-    <meta property="og:image" content="way_main-logo.jpg">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="WAY 학생회 익명 건의함">
-    <meta name="twitter:description" content="여러분의 소중한 의견을 들려주세요.">
-    <meta name="twitter:image" content="way_main-logo.jpg">
-
     <title>WAY 학생회 익명 건의함</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
-    <!-- Favicon -->
-    <link rel="icon" href="way_main-logo-Photoroom.png" type="image/png">
-    <link rel="apple-touch-icon" href="way_main-logo-Photoroom.png">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap"
+        rel="stylesheet" />
     <style>
         :root {
             --main-color: #000000;
-            --bg-color: #f5f7fa;
+            --bg-color: #f8f9fa;
+            --error-color: #ff5252;
+            --success-color: #2e7d32;
+            --card-bg: #ffffff;
         }
 
         body {
-            font-family: "IBM Plex Sans KR";
+            font-family: "IBM Plex Sans KR", sans-serif;
             background-color: var(--bg-color);
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
+            color: #333;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.85);
-            position: relative;
-            overflow: hidden;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
             width: 90%;
-            max-width: 500px;
-            /* z-index: 1; 필요시 활성화 */
+            max-width: 480px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            position: relative;
         }
 
-        .container::before {
-            content: "";
-            background-image: url('way_main-logo.jpg');
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        h2 {
-            color: var(--main-color);
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .input-group {
-            margin-bottom: 1rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            background-color: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(74, 144, 226, 0.3);
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        /* 입력창을 클릭(포커스)했을 때의 효과 */
-        input:focus,
-        textarea:focus {
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-color: var(--main-color);
-            box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
-        }
-
-        /* 플레이스홀더(안내 문구) 색상 조절 */
-        input::placeholder,
-        textarea::placeholder {
-            color: #666;
-        }
-
-        textarea {
-            height: 150px;
-            resize: none;
-        }
-
-        button {
-            -webkit-tap-highlight-color: transparent;
-            font-family: "IBM Plex Sans KR";
-            width: 100%;
-            padding: 12px;
-            background-color: var(--main-color);
-            color: white;
-            border:
-                none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        @media (hover: hover) {
-            button:hover {
-                background-color: #357abd;
-                transform: translateY(-1px);
-            }
-        }
-
-        /* 2. 모바일/PC 공통: 실제로 버튼을 '꾹' 누르고 있을 때의 피드백 */
-        button:active {
-            background-color: #2d66a3;
-            transform: translateY(1px);
-            /* 눌리는 느낌 */
-            transition: 0.1s;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        /* 화면 폭이 600px 이하일 때 적용되는 스타일 (모바일) */
+        /* 모바일 최적화 */
         @media (max-width: 600px) {
             body {
                 background-color: #ffffff;
@@ -164,78 +49,394 @@
             .container {
                 box-shadow: none;
                 width: 100%;
-                padding: 1rem;
+                padding: 1.5rem 1rem;
+                border-radius: 0;
             }
 
             h2 {
                 font-size: 1.5rem;
             }
         }
+
+        h2 {
+            color: var(--main-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s;
+            background: #fdfdfd;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--main-color);
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        textarea {
+            height: 180px;
+            resize: none;
+            line-height: 1.6;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:active {
+            transform: scale(0.97);
+            opacity: 0.85;
+        }
+
+        button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        /* 성공 메시지 애니메이션 */
+        .success-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease;
+            overflow: hidden;
+        }
+
+        .success-wrapper.show {
+            grid-template-rows: 1fr;
+        }
+
+        #successMsg {
+            min-height: 0;
+            color: var(--success-color);
+            text-align: center;
+            padding-top: 15px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .success-wrapper.show #successMsg {
+            opacity: 1;
+        }
+
+        /* 관리자 아이템 디자인 */
+        .suggestion-item {
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #f1f1f1;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 2000px;
+            opacity: 1;
+        }
+
+        .suggestion-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .suggestion-item strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #111;
+            font-weight: 700;
+            padding-right: 40px;
+        }
+
+        .suggestion-item p {
+            margin: 0;
+            color: #444;
+            line-height: 1.7;
+            font-size: 1rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .suggestion-item small {
+            color: #aaa;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: auto;
+            padding: 6px 12px;
+            background-color: #fff1f1;
+            color: var(--error-color);
+            font-size: 0.75rem;
+            border-radius: 10px;
+            opacity: 0.6;
+            transition: 0.2s;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            opacity: 1;
+            background-color: var(--error-color);
+            color: #fff;
+        }
+
+        .logout-btn {
+            background-color: #f1f1f1;
+            color: #666;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #e5e5e5;
+        }
+
+        /* 전환 및 에러 효과 */
+        .switching {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .input-error {
+            border: 2px solid var(--error-color) !important;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-4px);
+            }
+
+            75% {
+                transform: translateX(4px);
+            }
+        }
+
+        .deleting {
+            max-height: 0;
+            margin-bottom: 0;
+            padding: 0;
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+            border: none;
+        }
+
+        /* [중요] 관리자 패널은 기본적으로 절대 보이지 않게 함 */
+        #adminPanel {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h2>📩 WAY 학생회 익명 건의함</h2>
-        <form id="suggestionForm">
-            <div class="input-group">
-                <label for="title">제목</label>
-                <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
-            </div>
-            <div class="input-group">
-                <label for="message">건의 내용</label>
-                <textarea id="message" name="message" placeholder="학생회에 바라는 점을 자유롭게 적어주세요" required></textarea>
-            </div>
-            <button type="submit" id="submitBtn">제출하기</button>
-        </form>
-        <p class="footer">본 건의함은 익명으로 운영되며 개인정보를 수집하지 않습니다.</p>
+    <div class="container" id="mainCard">
+        <div id="formSection">
+            <h2>📩 WAY 학생회 익명 건의함</h2>
+            <form id="suggestionForm">
+                <div class="input-group">
+                    <label for="title">제목</label>
+                    <input type="text" id="title" placeholder="제목을 입력하세요">
+                </div>
+                <div class="input-group">
+                    <label for="message">건의 내용</label>
+                    <textarea id="message" placeholder="학생회에 바라는 점을 자유롭게 적어주세요"></textarea>
+                </div>
+                <button type="submit" id="submitBtn">제출하기</button>
+                <div class="success-wrapper" id="successWrapper">
+                    <div id="successMsg">의견이 성공적으로 전달되었습니다! ✅</div>
+                </div>
+            </form>
+            <p class="footer" style="text-align: center; margin-top: 2rem; font-size: 0.85rem; color: #bbb;">본 건의함은 익명으로
+                운영되며 개인정보를 수집하지 않습니다.</p>
+        </div>
+
+        <div id="adminPanel" style="display: none;">
+            <h2>📋 건의사항 목록</h2>
+            <div id="suggestionList"></div>
+            <button class="logout-btn" onclick="location.reload()">뒤로가기</button>
+        </div>
     </div>
 
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzpFIxAzooCTCSAJe2EIooL37Ldhz00LxCd-u7AiZZWOHi9KyiEu4liiMA8TnLlbm4kTA/exec'; // 2단계에서 채울 예정
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query, orderBy, getDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbRd0_MyFjxXX_NMhB_AETonpoz69JLaQ",
+            authDomain: "stu-way.firebaseapp.com",
+            projectId: "stu-way",
+            storageBucket: "stu-way.firebasestorage.app",
+            messagingSenderId: "659354414960",
+            appId: "1:659354414960:web:bdb2eb34cb57259a65a9b5",
+            measurementId: "G-D2C59EZ4YE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
         const form = document.getElementById('suggestionForm');
+        const btn = document.getElementById('submitBtn');
+        const mainCard = document.getElementById('mainCard');
+        const successWrapper = document.getElementById('successWrapper');
+        const titleInput = document.getElementById('title');
+        const messageInput = document.getElementById('message');
+        const formSection = document.getElementById('formSection');
+        const adminPanel = document.getElementById('adminPanel');
 
-        form.addEventListener('submit', e => {
+        const triggerError = (el) => {
+            el.classList.add('input-error');
+            setTimeout(() => el.classList.remove('input-error'), 400);
+        };
+
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('submitBtn');
+            const title = titleInput.value.trim();
+            const message = messageInput.value.trim();
 
-            // 1. 입력된 값 가져오기
-            const titleInput = document.getElementById('title');
-            const messageInput = document.getElementById('message');
+            try {
+                const adminRef = doc(db, "settings", "admin");
+                const adminSnap = await getDoc(adminRef);
 
-            // 2. .trim()을 사용하여 앞뒤 공백 및 줄바꿈 제거
-            const cleanTitle = titleInput.value.trim();
-            const cleanMessage = messageInput.value.trim();
+                if (adminSnap.exists() && title === adminSnap.data().key) {
+                    // 화면 전환 애니메이션
+                    mainCard.classList.add('switching');
+                    setTimeout(() => {
+                        formSection.style.display = 'none'; // 양식 숨김
+                        adminPanel.style.display = 'block'; // 관리자창 표시
+                        loadSuggestions();
+                        mainCard.classList.remove('switching');
+                        mainCard.classList.add('fade-in-up');
+                    }, 400);
+                    return;
+                }
+            } catch (err) { console.error(err); }
 
-            // 만약 공백을 지웠더니 내용이 텅 비어있다면 전송 막기
-            if (cleanTitle === "" || cleanMessage === "") {
-                alert("내용을 입력해주세요.");
-                return;
-            }
+            if (!title) { triggerError(titleInput); return; }
+            if (!message) { triggerError(messageInput); return; }
 
             btn.innerText = '전송 중...';
             btn.disabled = true;
 
-            // 3. 정돈된 데이터를 담아서 보내기
-            const formData = new FormData();
-            formData.append('title', cleanTitle);
-            formData.append('message', cleanMessage);
-
-            fetch(scriptURL, { method: 'POST', body: formData })
-                .then(response => {
-                    alert('소중한 의견이 성공적으로 전달되었습니다!');
-                    form.reset();
-                    btn.innerText = '제출하기';
-                    btn.disabled = false;
-                })
-                .catch(error => {
-                    alert('오류가 발생했습니다. 다시 시도해주세요.');
-                    btn.disabled = false;
+            try {
+                await addDoc(collection(db, "suggestions"), {
+                    title: title,
+                    message: message,
+                    createdAt: new Date()
                 });
+                btn.innerText = '제출하기';
+                btn.disabled = false;
+                form.reset();
+                successWrapper.classList.add('show');
+                setTimeout(() => { successWrapper.classList.remove('show'); }, 3000);
+            } catch (error) {
+                btn.innerText = '제출하기';
+                btn.disabled = false;
+                alert('전송 실패');
+            }
         });
-    </script>
 
+        async function loadSuggestions() {
+            const q = query(collection(db, "suggestions"), orderBy("createdAt", "desc"));
+            const querySnapshot = await getDocs(q);
+            renderList(querySnapshot);
+        }
+
+        function renderList(snapshot) {
+            const listDiv = document.getElementById('suggestionList');
+            listDiv.innerHTML = "";
+            snapshot.forEach((docData) => {
+                const data = docData.data();
+                const item = document.createElement('div');
+                item.className = 'suggestion-item';
+                item.id = `item-${docData.id}`;
+                item.innerHTML = `
+                    <strong>${data.title}</strong>
+                    <p>${data.message}</p>
+                    <small>${data.createdAt?.toDate().toLocaleString('ko-KR') || "날짜 정보 없음"}</small>
+                    <button class="delete-btn" onclick="confirmDelete('${docData.id}')">삭제</button>
+                `;
+                listDiv.appendChild(item);
+            });
+        }
+
+        window.confirmDelete = async (id) => {
+            if (confirm("이 소중한 의견을 삭제하시겠습니까?")) {
+                const item = document.getElementById(`item-${id}`);
+                item.classList.add('deleting');
+                setTimeout(async () => {
+                    await deleteDoc(doc(db, "suggestions", id));
+                    loadSuggestions();
+                }, 400);
+            }
+        };
+    </script>
 </body>
 
 </html>
